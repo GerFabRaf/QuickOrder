@@ -1,0 +1,27 @@
+-- Table quickorder.ATENCION_COMENSAL
+
+CREATE TABLE "quickorder"."ATENCION_COMENSAL"(
+ "ATENCION_ID" Integer DEFAULT nextval('Seq_ATENCION_COMENSAL_ATENCION_ID') NOT NULL,
+ "EMPLEADO_ID" Integer NOT NULL,
+ "USUARIO_ID" Integer NOT NULL,
+ "FECHA_SOLICITUD" Timestamp NOT NULL,
+ "FECHA_ATENCION" Timestamp
+)
+TABLESPACE "ts_quickorder"
+;
+
+COMMENT ON TABLE "quickorder"."ATENCION_COMENSAL" IS 'Registro de atención al comensal solicitada a través de QuickOrder'
+;
+
+-- Create indexes for table quickorder.ATENCION_COMENSAL
+
+CREATE INDEX "IDX_EMPLEADO_ATENCION" ON "quickorder"."ATENCION_COMENSAL" ("EMPLEADO_ID")
+;
+
+CREATE INDEX "IDX_USUARIO_ATENCION" ON "quickorder"."ATENCION_COMENSAL" ("USUARIO_ID")
+;
+
+-- Add keys for table quickorder.ATENCION_COMENSAL
+
+ALTER TABLE "quickorder"."ATENCION_COMENSAL" ADD CONSTRAINT "IDXPK_ATENCION_COMENSAL" PRIMARY KEY ("ATENCION_ID")
+;
